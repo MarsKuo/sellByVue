@@ -1,18 +1,23 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <!--3 使用組件 -->
     <HelloWorld/>
+    <Test />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+  //1 先導入組件
+  import HelloWorld from './components/HelloWorld'
+  import Test from './components/test'
+  //2 註冊組件
+  export default {
+    name: 'app',
+    components: {
+      HelloWorld,
+      Test
+    }
 }
 </script>
 
