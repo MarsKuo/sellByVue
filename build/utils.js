@@ -71,6 +71,7 @@ exports.styleLoaders = function (options) {
   const output = []
   const loaders = exports.cssLoaders(options)
 
+  //遍歷
   for (const extension in loaders) {
     const loader = loaders[extension]
     output.push({
@@ -78,7 +79,7 @@ exports.styleLoaders = function (options) {
       use: loader
     })
   }
-
+  // 上面所述的擴展名文件
   return output
 }
 
