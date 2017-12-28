@@ -95,33 +95,33 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
     // 3、编写接口
 
-    before(app){
+    before(app) {
 
-app.get('/api/goods', (req,res) => {
+      app.get('/api/goods', (req, res) => {
 
-// 返回数据给客户端，返回json数据
+        // 返回数据给客户端，返回json数据
 
-res.json(goods);
+        res.json(goods);
 
-}),
+      }),
 
-app.get('/api/ratings', (req,res) => {
+        app.get('/api/ratings', (req, res) => {
 
-// 返回数据给客户端，返回json数据
+          // 返回数据给客户端，返回json数据
 
-res.json(ratings);
+          res.json(ratings);
 
-}),
+        }),
 
-app.get('/api/seller', (req,res) => {
+        app.get('/api/seller', (req, res) => {
 
-// 返回数据给客户端，返回json数据
+          // 返回数据给客户端，返回json数据
 
-res.json(seller);
+          res.json(seller);
 
-})
+        })
 
-}
+    }
 
   },
 
@@ -187,9 +187,9 @@ module.exports = new Promise((resolve, reject) => {
 
         onErrors: config.dev.notifyOnErrors
 
-        ? utils.createNotifierCallback()
+          ? utils.createNotifierCallback()
 
-        : undefined
+          : undefined
 
       }))
 
