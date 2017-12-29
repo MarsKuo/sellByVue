@@ -4,7 +4,7 @@
 
     <!-- Top內容 -->
     <div class="top-wrapper">
-      <div class="back--wrapper">
+      <div class="back-wrapper">
         <span class="icon-arrow_lift"></span>
       </div>
 
@@ -13,24 +13,37 @@
         <input type="text" class="search-bar" placeholder="搜尋店內商品">
       </form>
       <div class="more-wrapper">
-          <a href="#" class="spell-bt">訂購單</a>
-          <div class="more-bt"></div>
+          <a href="#" class="spelling-bt">拚單</a>
+          <div class="more-bt">
+            <i class="s-radius"></i>
+            <i class="s-radius"></i>
+            <i class="s-radius"></i>
+          </div>
+
       </div>
     </div>
     <!-- 主題內容 -->
     <div class="content-wrapper"></div>
     <!-- 公告內容 -->
     <div class="bulletin-wrapper"></div>
-
+    <!-- 背景 -->
+    <div class="bg-wrapper" :style="content_bg" >
+      <!-- <img :src="poiInfo.head_pic_url" alt=""> -->
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
+  props: {    //組件傳值
     poiInfo:{
       type: Object,
       default: {},
+    }
+  },
+  computed:{  //計算屬性
+    content_bg(){
+      return `background-image: url(${this.poiInfo.head_pic_url})`;
     }
   }
 };
@@ -38,8 +51,15 @@ export default {
 
 
 
-<style >
- /* 導入css樣式 */
-  @import url("Header.scss");
+<style>
+ /* 導入字體圖標 */
+ @import url("../../common/styles/icon.css");
 </style>
 
+
+
+
+<style lang="sass" scoped  >
+  //  導入sass
+  @import './Header.sass';
+</style>

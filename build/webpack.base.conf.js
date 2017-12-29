@@ -44,6 +44,12 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+      // 處理 sass
+      {
+        //test: /\.s[a|c]ss$/,
+        test: /\.(sass|scss)$/,
+        loaders: ["style", "css", "sass"]
+      },
       // .js類型的文件
       {
         test: /\.js$/,
