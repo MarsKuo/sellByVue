@@ -22,7 +22,7 @@ $bulletin_color: #bababc
       padding: 0 104px 0 50px
       box-sizing: border-box
       .search-icon
-        background: url(../../../resource/img/titans_h5_search@2x.png) no-repeat 11px center
+        background: url(./titans_h5_search@2x.png) no-repeat 11px center
         width: 28px
         height: 31px
         position: absolute
@@ -164,6 +164,14 @@ $bulletin_color: #bababc
           font-size: 15px
           color: white
           margin-top: 13px
+        .score
+          height: 50px
+          margin-top: 6px
+          text-align: center
+          font-size: 0
+          .star
+            display: inline-block
+            margin-right: 7px
         .tip
           font-size: 11px
           color: $bulletin_color
@@ -210,7 +218,7 @@ $bulletin_color: #bababc
 
 //過渡時間、延遲、曲線函數
 .detail-enter-active, .detail-leave-active
-  transition: opacity 5s
+  transition: opacity 0.5s
 //過度開始狀態，過度結束狀態
 .detail-enter, .detail-leave-to
   opacity: 0

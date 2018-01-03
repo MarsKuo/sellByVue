@@ -33,7 +33,10 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-    }
+       //讓每次讀檔路徑都相符
+      'components': resolve('./src/components')
+    },
+
   },
   // 對某種類型的文件，通過某個loader做出處理
   module: {

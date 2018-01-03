@@ -21,8 +21,8 @@
 
 <script>
 //1 導入
-import Myheader from "./components/Header/Header";
-import MyNav from "./components/Nav/Nav";
+import Myheader from "components/Header/Header";
+import MyNav from "components/Nav/Nav";
 
 export default {
   name: "app",
