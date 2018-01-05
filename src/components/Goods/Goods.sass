@@ -1,0 +1,110 @@
+.goods
+  display: flex
+  position: absolute
+  top: 201px
+  bottom: 51px
+  overflow: hidden
+  width: 100%
+
+  // flex: flex-grow | flex-shrink | flex-basis
+  //flex-grow必選，其餘可選
+  // 預設 flex 0 1 auto
+  // flex-grow 定義放大比例，默認是0，如果存在剩餘空間，也不放大
+  // flex-shrink: 定義縮小比例，默認1，如果空間不足，該項目將會被縮小，flex-shrink屬性為0時，其他項目為1，則空間不足時，前者不縮小
+  // flex-basis: 定義多餘空間之前，項目佔據主軸空間。瀏覽器根據這個屬性，計算佔據是否有多餘空間，默認是auto，即項目的本來大小，設為跟width或heigth屬性質一樣，則項目佔據固定空間;
+
+  .menu-wrapper
+    flex: 0 0 85px
+    background-color: #f4f4f4
+    .menu-item
+      padding: 16px 23px 15px 10px
+      border-bottom: 1px solid #E4E4E4
+      .text
+        font-size: 13px
+        color: #333333
+        line-height: 17px
+        vertical-align: middle
+        // 多行顯示省略號，使用 webkit的css擴展屬性，是用方位webkit以及手機
+
+        // 用來顯示一個block元素顯示的資料行數
+        -webkit-line-clamp: 2
+        // 必須 將對象作為彈性伸縮盒子模型顯示
+        display: -webkit-box
+        // 必須 設置或檢索伸縮盒子的子元素排列
+        -webkit-box-orient: vertical
+        overflow: hidden
+
+        .icon
+          width: 15px
+          height: 15px
+          vertical-align: middle
+
+  .foods-wrapper
+    flex: 1
+    // background-color: blue
+    .container-list
+      padding: 11px 11px 0 11px
+      border-bottom: 1px solid #E4E4E4
+      img
+        width: 100%
+        margin-bottom: 11px
+        border-radius: 5px
+    .food-list
+      padding: 11px
+      .title
+        font-size: 13px
+        height: 13px
+        background: url(btn_yellow_highlighted@2x.png) no-repeat left center
+        background-size: 2px 10px
+        padding-left: 7px
+        margin-bottom: 2px
+      .food-item
+        display: flex
+        margin-bottom: 25px
+        .icon
+          flex: 0 0 63px
+          background-position: center
+          background-size: 120% 100%
+          background-repeat: no-repeat
+          margin-right: 11px
+          height: 75px
+        .content
+          flex: 1
+          .name
+            font-size: 16px
+            line-height: 21px
+            color: #333333
+            margin-bottom: 10px
+            padding-right: 27px
+          .desc
+            font-size: 10px
+            line-height: 19px
+            color: #bfbfbf
+
+            //超出部分省略號
+            -webkit-line-clamp: 1
+            display: -webkit-box
+            -webkit-box-orient: vertical
+            overflow: hidden
+
+          .extra
+            font-size: 10px
+            color: #bfbfbf
+            margin-bottom: 7px
+            .saled
+              margin-right: 14px
+          .product
+            height: 15px
+            margin-bottom: 6px
+          .price
+            font-size: 0
+            .text
+              font-size: 14px
+              color: #fb4e44
+            .unit
+              font-size: 12px
+              color: #bfbfbf
+
+
+
+

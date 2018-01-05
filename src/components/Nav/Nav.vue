@@ -42,8 +42,7 @@ export default {
     height: 40px;
     line-height: 40px;
     border-bottom: 1px solid #e4e4e4;
-    position: relative;
-    z-index: -1;
+
   }
   .nav .nav-item{
     flex : 1;

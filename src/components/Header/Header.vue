@@ -47,7 +47,6 @@
     </div>
     <!-- 背景 -->
     <div class="bg-wrapper" :style="content_bg" >
-      <!-- <img :src="poiInfo.head_pic_url" alt=""> -->
     </div>
 
     <!-- 公告詳情 -->

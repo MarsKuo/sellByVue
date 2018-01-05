@@ -4,6 +4,7 @@ $bulletin_color: #bababc
 .header
   height: 160px
   padding-top: 20px
+  box-sizing: border-box
   .top-wrapper
     position: relative
     .back-wrapper
@@ -138,6 +139,7 @@ $bulletin_color: #bababc
     width: 100%
     height: 100%
     position: absolute
+    z-index: 1
     left: 0
     top: 0
     background: rgba(98,98,98,0.8)
@@ -165,13 +167,18 @@ $bulletin_color: #bababc
           color: white
           margin-top: 13px
         .score
-          height: 50px
+          height: 10px
           margin-top: 6px
           text-align: center
           font-size: 0
+          display: inline-block
           .star
             display: inline-block
             margin-right: 7px
+          span
+            display: inline-block
+            font-size: 10px
+            color: white
         .tip
           font-size: 11px
           color: $bulletin_color
