@@ -4,14 +4,14 @@
     <div class="menu-wrapper" ref="menuScroll">
         <ul >
           <!-- 專場 -->
-          <li class="menu-item">
+          <li class="menu-item" :class="{'current': currentIndex === 0 }" @click="selectMenu(0)">
             <p class="text">
-              <img :src="container.tag_icon" v-if="container.tag_icon" class="icon" alt="">
+              <img :src="container.tag_icon" v-if="container.tag_icon" class="icon" alt="" >
               {{container.tag_name}}
             </p>
           </li>
 
-          <li class="menu-item" v-for="(item,index) in goods" :key="index">
+          <li class="menu-item" v-for="(item,index) in goods" :key="index" :class="{'current': currentIndex === index +1}" @click="selectMenu(index)">
             <p class="text">
               <img :src="item.icon" v-if="item.icon" class="icon" alt="">
               {{item.name}}
@@ -67,6 +67,9 @@ export default {
       container: {},
       goods: [],
       listHeight: [],
+      scrollY: 0,
+      menuScroll: {},
+      footScroll:{}
     };
   },
   created() {
@@ -112,12 +115,19 @@ export default {
     initScroll(){
       //一个对象，持有已注册过 ref 的所有子组件。
       //ref屬性就是用來綁定某個dom元素或是某個組件，然後在this.$refs裡面
-      new BScroll(this.$refs.menuScroll);
-      new BScroll(this.$refs.foodScroll);
+     this.menuScroll = new BScroll(this.$refs.menuScroll,{click: true});
+
+     //設定probeType才能捕抓捲軸高度  ref: https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/events.html#scroll
+     this.foodScroll = new BScroll(this.$refs.foodScroll,{probeType: 3});
+
+     //監聽滾動監聽事件
+     this.foodScroll.on('scroll',(pos)=>{
+      this.scrollY = Math.abs(Math.round(pos.y));
+     });
     },
     calculateHeight(){
           //通過$erfs得取對應的元素
-          let foodlist=this.$refs.getElementByClassName('food-list-hook');
+          let foodlist=this.$refs.foodScroll.getElementsByClassName('food-list-hook');
           //添加到數組區間
           //0~216 第一個區間(專場)
           //217-1342 第二個區間(熱銷)
@@ -130,12 +140,32 @@ export default {
             height +=item.clientHeight;
             this.listHeight.push(height);
           }
-    }
+    },
+   selectMenu(index){
+      let foodlist=this.$refs.foodScroll.getElementsByClassName('food-list-hook');
+
+ console.log(foodlist);
+      //根據下標滾動到相對應的元素
+      let el = foodlist[index];
+    this.foodScroll.scrollToElement(el,250);
+   }
+  },
+  computed:{ //計算屬性(不能傳參數)
+   currentIndex(){//根據右側滾動位置，確定對硬的索引下標
+      for(let i=0;i<this.listHeight.length;i++){
+        //獲取商品區間的範圍
+        let height1 =  this.listHeight[i];
+        let height2 =  this.listHeight[i+1];
+        //是否再上述區間中
+        if(!height2 && (this.scrollY >= height1 && this.scrollY < height2))
+        {
+          // console.log(i);
+          return i;
+        }
+      }
+      return 0;
+   }
   }
-  //computed:{ //計算屬性(不能船參數)
-  //   head_bg(){
-  //   }
-  // }
 };
 </script>
 
