@@ -11,7 +11,7 @@
             </p>
           </li>
 
-          <li class="menu-item" v-for="(item,index) in goods" :key="index" :class="{'current': currentIndex === index +1}" @click="selectMenu(index)">
+          <li class="menu-item" v-for="(item,index) in goods" :key="index" :class="{'current': currentIndex === index +1}" @click="selectMenu(index +1)">
             <p class="text">
               <img :src="item.icon" v-if="item.icon" class="icon" alt="">
               {{item.name}}
@@ -48,12 +48,18 @@
                       <span class="unit">$ {{food.unit}}</span>
                     </p>
                 </div>
+
+                <div class="cartcontrol-wrapper">
+                  <Cartcontrol :food='food'></Cartcontrol>
+                </div>
+
               </li>
             </ul>
 
           </li>
         </ul>
     </div>
+    <Shopcart :shipping_fee_tip='poiInfo.shipping_fee_tip' :min_rice_tip = 'poiInfo.min_price_tip' :selectFoods='selectFoods' ></Shopcart>
   </div>
 </template>
 
@@ -61,11 +67,18 @@
 // 導入iscroll
 import BScroll from 'better-scroll'
 
+//導入shopcart
+import Shopcart from 'components/Shopcart/Shopcart'
+
+//導入cartcontrol
+import Cartcontrol from 'components/cartcontrol/cartcontrol'
+
 export default {
   data() {
     return {
       container: {},
       goods: [],
+      poiInfo: {},
       listHeight: [],
       scrollY: 0,
       menuScroll: {},
@@ -84,7 +97,7 @@ export default {
         if (dataSource.code == 0) {
           that.container = dataSource.data.container_operation_source;
           that.goods = dataSource.data.food_spu_tags;
-
+          that.poiInfo = dataSource.data.poi_info;
           //調用滾動的初始化方法
           //開始時，DOM元素還沒有進行渲染，所以高度有問題
           //在獲取到數據後，並DOM已經渲染，表示列表高度是沒問題
@@ -118,7 +131,7 @@ export default {
      this.menuScroll = new BScroll(this.$refs.menuScroll,{click: true});
 
      //設定probeType才能捕抓捲軸高度  ref: https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/events.html#scroll
-     this.foodScroll = new BScroll(this.$refs.foodScroll,{probeType: 3});
+     this.foodScroll = new BScroll(this.$refs.foodScroll,{probeType: 3,click: true});
 
      //監聽滾動監聽事件
      this.foodScroll.on('scroll',(pos)=>{
@@ -143,28 +156,45 @@ export default {
     },
    selectMenu(index){
       let foodlist=this.$refs.foodScroll.getElementsByClassName('food-list-hook');
-
- console.log(foodlist);
       //根據下標滾動到相對應的元素
       let el = foodlist[index];
-    this.foodScroll.scrollToElement(el,250);
+      this.foodScroll.scrollToElement(el,250);
    }
   },
   computed:{ //計算屬性(不能傳參數)
    currentIndex(){//根據右側滾動位置，確定對硬的索引下標
-      for(let i=0;i<this.listHeight.length;i++){
+      for(let i = 0 ;  i < this.listHeight.length ; i++){
+
         //獲取商品區間的範圍
         let height1 =  this.listHeight[i];
         let height2 =  this.listHeight[i+1];
+
         //是否再上述區間中
-        if(!height2 && (this.scrollY >= height1 && this.scrollY < height2))
+        if( (this.scrollY >= height1 && this.scrollY < height2))
         {
-          // console.log(i);
+
           return i;
+
         }
       }
       return 0;
+   },
+   selectFoods(){
+    let foods = [];
+     this.goods.forEach((good)=>{
+       good.spus.forEach((food)=>{
+            if(food.count >0){
+              foods.push(food);
+            }
+       })
+     });
+      return foods;
    }
+  },
+  components:{
+    BScroll,
+    Shopcart,
+    Cartcontrol
   }
 };
 </script>
