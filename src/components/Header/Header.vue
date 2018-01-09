@@ -144,5 +144,5 @@ export default {
 
 <style lang="sass" scoped  >
   //  導入sass
-  @import './Header.sass';
+  @import './Header.sass'
 </style>

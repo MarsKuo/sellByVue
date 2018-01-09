@@ -16,6 +16,7 @@
               <img :src="item.icon" v-if="item.icon" class="icon" alt="">
               {{item.name}}
             </p>
+            <i class="num" v-show="calculateCount(item.spus)">{{calculateCount(item.spus)}}</i>
           </li>
         </ul>
     </div>
@@ -29,11 +30,11 @@
             </div>
         </li>
           <!-- 具體分類 -->
-          <li v-for="(item,index) in goods" :key="index" class="food-list food-list-hook">
+          <li v-for="(item,index) in goods" :key="index" class="food-list food-list-hook" >
             <!-- 具體商品 -->
             <h3 class="title"> {{item.name}}</h3>
             <ul>
-              <li v-for="(food,index) in item.spus" :key="index" class="food-item">
+              <li v-for="(food,index) in item.spus" :key="index" class="food-item" @click="showDetail(food)">
                 <div class="icon" :style="head_bg(food.picture)"></div>
                 <div class="content">
                     <h3 class="name">{{food.name}}</h3>
@@ -59,7 +60,11 @@
           </li>
         </ul>
     </div>
-    <Shopcart :shipping_fee_tip='poiInfo.shipping_fee_tip' :min_rice_tip = 'poiInfo.min_price_tip' :selectFoods='selectFoods' ></Shopcart>
+    <!-- <Shopcart :shipping_fee_tip='poiInfo.shipping_fee_tip' :min_price_tip = 'poiInfo.min_price_tip' :selectFoods='selectFoods' ></Shopcart> -->
+    <Shopcart :poiInfo='poiInfo' :selectFoods='selectFoods' ></Shopcart>
+
+    <!-- 商品詳情 -->
+    <Food :food='selectedFood' ref='foodView'></Food>
   </div>
 </template>
 
@@ -73,6 +78,9 @@ import Shopcart from 'components/Shopcart/Shopcart'
 //導入cartcontrol
 import Cartcontrol from 'components/cartcontrol/cartcontrol'
 
+//導入food
+import Food from 'components/food/food'
+
 export default {
   data() {
     return {
@@ -82,7 +90,8 @@ export default {
       listHeight: [],
       scrollY: 0,
       menuScroll: {},
-      footScroll:{}
+      footScroll:{},
+      selectedFood: {}
     };
   },
   created() {
@@ -159,6 +168,23 @@ export default {
       //根據下標滾動到相對應的元素
       let el = foodlist[index];
       this.foodScroll.scrollToElement(el,250);
+   },
+   calculateCount(spus){
+
+     let count = 0;
+     spus.forEach((food)=>{
+       if(food.count>0){
+         count += food.count;
+       }
+     })
+     return count;
+   },
+   showDetail(food){
+     //傳值
+     this.selectedFood = food;
+
+     //顯示詳情頁
+      this.$refs.foodView.showView();
    }
   },
   computed:{ //計算屬性(不能傳參數)
@@ -190,11 +216,13 @@ export default {
      });
       return foods;
    }
+
   },
   components:{
     BScroll,
     Shopcart,
-    Cartcontrol
+    Cartcontrol,
+    Food
   }
 };
 </script>

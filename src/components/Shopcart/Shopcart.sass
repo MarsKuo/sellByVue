@@ -1,0 +1,154 @@
+.shopcart-warpper
+  width: 100%
+  height: 51px
+  background-color: #514f4f
+  position: fixed
+  bottom: 0
+  left: 0
+  display: flex
+  z-index: 99
+  &.highlight
+    background-color: #2d2b2a
+  .content-left
+    flex: 1
+    .logo-wrapper
+      width: 50px
+      height: 50px
+      background-color: #666666
+      border-radius: 50%
+      position: relative
+      top: -14px
+      left: 10px
+      text-align: center
+      float: left
+      &.highlight
+        background-color: #ffd161
+      .logo
+        font-size: 28px
+        color: #c4c4c4
+        line-height: 50px
+        &.highlight
+          color: #2d2b2a
+      .num
+        width: 15px
+        height: 15px
+        line-height: 15px
+        border-radius: 50%
+        font-size: 9px
+        color: white
+        background-color: red
+        position: absolute
+        right: 0
+        top: 0
+
+    .desc-wrapper
+      float: left
+      margin-left: 13px
+      .total-price
+        font-size: 18px
+        line-height: 33px
+        color: white
+      .tip
+        font-size: 12px
+        color: #bab9b9
+        line-height: 51px
+        &.highlight
+          line-height: 12px
+  .content-right
+    flex: 0 0 110px
+    background-color: black
+    font-size: 15px
+    color: #bab9b9
+    line-height: 51px
+    text-align: center
+    &.highlight
+      color: #2d2b2a
+      background-color: #ffd161
+  .shopcart-list
+    position: absolute
+    left: 0
+    top: 0
+    z-index: -1
+    width: 100%
+    &.show
+      transform: translateY(-100%)
+    .list-top
+      height: 30px
+      text-align: center
+      font-size: 11px
+      background-color: #f3e6c6
+      line-height: 30px
+      color: #646158
+    .list-header
+      background-color: #f4f4f4
+      height: 30px
+      .title
+        float: left
+        border-left: 4px solid #53c123
+        padding-left: 6px
+        line-height: 30px
+        font-size: 12px
+      .empty
+        float: right
+        line-height: 30px
+        margin-right: 10px
+        font-size: 0
+        img
+          height: 14px
+          margin-right: 9px
+          vertical-align: middle
+        span
+          font-size: 12px
+          vertical-align: middle
+    .list-content
+      max-height: 360px
+      overflow: hidden
+      background-color: white
+      .food
+        height: 38px
+        padding: 12px 12px 10px 12px
+        border-bottom: 1px solid #f4f4f4
+        .desc-wrapper
+          float: left
+          width: 240px
+          .desc-left
+            float: left
+            width: 170px
+            .name
+              font-size: 16px
+              margin-bottom: 8px
+              //超出部分隱藏
+              -webkit-line-clamp: 1
+              display: -webkit-box
+              -webkit-box-orient: vertical
+              overflow: hidden
+              line-height: 16px
+            .unit
+              font-size: 12px
+              color: #b4b4b4
+            .description
+              color: #b4b4b4
+              font-size: 12px
+              //超出部分隱藏
+              // -webkit-line-clamp: 1
+              // display: -webkit-box
+              // -webkit-box-orient: vertical
+              overflow: hidden
+              line-height: 12px
+          .desc-right
+            width: 70px
+            float: right
+            text-align: right
+            .price
+              font-size: 12px
+              line-height: 38px
+        .cartcontrol-wrapper
+          float: right
+.list-mask
+  position: fixed
+  top: 0
+  right: 0
+  width: 100%
+  height: 100%
+  z-index: 98
+  background-color: rgba(7,12,27,0.7)
