@@ -1,0 +1,21 @@
+.ratings{
+ position: absolute;
+ left: 0;
+ top: 191px;
+ bottom: 0;
+ width: 100%;
+ overflow: hidden;
+ .ratings-wrapper {
+   .overview{
+    padding: 20px 0 18px 0;
+    display: flex;
+    .overview-left{
+      flex: 1;
+      padding: 26px;
+    }
+    .overview-right{
+      flex: 0 0 100px;
+    }
+   }
+ }
+}

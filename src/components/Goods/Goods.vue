@@ -76,7 +76,7 @@ import BScroll from 'better-scroll'
 import Shopcart from 'components/Shopcart/Shopcart'
 
 //導入cartcontrol
-import Cartcontrol from 'components/cartcontrol/cartcontrol'
+import Cartcontrol from 'components/Cartcontrol/Cartcontrol'
 
 //導入food
 import Food from 'components/food/food'
