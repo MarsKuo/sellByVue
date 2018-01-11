@@ -11,11 +11,103 @@
     display: flex;
     .overview-left{
       flex: 1;
-      padding: 26px;
+      padding-left: 26px;
+      .comment-score{
+        float: left;
+        width: 48px;
+        text-align: center;
+        margin-right: 26px;
+        .score{
+          font-size: 23px;
+          font-weight: 800;
+          color: #ffb000 ;
+          margin-bottom: 9px;
+        }
+        .text{
+          font-size: 11px;
+          color:#666666;
+        }
+      }
+      .other-score{
+            float: left;
+            margin-top: 3px;
+            .item{
+              height: 22px;
+              .text{
+                font-size: 11px;
+                color: #666666;
+                float: left;
+              }
+              .star{
+                margin-right: 11px;
+                font-size: 11px;
+                color: #ffb000;
+                float: left;
+              }
+              .score{
+                font-size: 11px;
+                color: #ffb000;
+                float: left;
+              }
+            }
+            .quality-score{
+              margin-bottom: 14px;
+            }
+      }
     }
     .overview-right{
       flex: 0 0 100px;
+      text-align: center;
+      border-left: 1px solid #9d9d9d;
+      .delivery-score{
+        .score{
+          font-size: 19px;
+          font-weight: 500;
+          color: #999999;
+          margin-bottom: 10px;
+          margin-top: 3px;
+        }
+        .text{
+          font-size: 11px;
+          color: #999999;
+        }
+      }
     }
+   }
+   .content{
+      padding: 16px;
+      .rating-select{
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 0;
+        border: 1px solid #ffb000;
+        margin-bottom: 11px;
+        border-radius: 3px;
+        .item{
+          width: 33.3%;
+          display: inline-block;
+          height: 33px;
+          line-height: 33px;
+          font-size: 14px;
+          text-align: center;
+          border-right: 1px solid #ffb000;
+          box-sizing: border-box;
+          color: #ffb000;
+          &:last-child{
+            border-right: 0;
+            img{
+              height: 14px;
+            }
+          }
+        }
+
+      }
+      .labels-view{
+
+      }
+      .rating-list{
+
+      }
    }
  }
 }
