@@ -44,7 +44,7 @@
       </div>
 
       <div class="labels-view">
-        <span v-for="item in ratings.labels" class="item" :class="{'highlight':item.label_star>0}">
+        <span v-for="item in ratings.labels" class="item" :class="{'highlight':item.label_star>0}" :key="item.id">
         {{item.content}}  {{item.label_count}}
         </span>
       </div>
@@ -67,8 +67,8 @@
               </div>
               <div class="c_content" v-html="commentStr(comment.comment)">
               </div>
-              <div class="img-wrapper" v-if="comment.comment_pics.length">
-                <img v-for="item in comment.comment_pics" :src="item.thumbnail_url">
+              <div class="img-wrapper" >
+                <img v-for="item in comment.comment_pics" :src="item.thumbnail_url" :key="item.id">
               </div>
             </div>
           </li>
@@ -152,7 +152,8 @@ export default {
         });
         return arr;
       }else{   //點評
-        return this.ratings.comments_dp;
+        return this.ratings.comments_dp.comments;
+
       }
     }
   },

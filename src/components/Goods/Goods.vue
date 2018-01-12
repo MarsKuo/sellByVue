@@ -231,3 +231,4 @@ export default {
   //  導入sass
   @import './Goods.sass'
 </style>
+
