@@ -139,7 +139,7 @@ $bulletin_color: #bababc
     width: 100%
     height: 100%
     position: absolute
-    z-index: 1
+    z-index: 999
     left: 0
     top: 0
     background: rgba(98,98,98,0.8)
@@ -224,13 +224,13 @@ $bulletin_color: #bababc
 
 
 //過渡時間、延遲、曲線函數
-.detail-enter-active, .detail-leave-active
-  transition: opacity 0.5s
+.bulletin-detail-enter-active, .bulletin-detail-leave-active
+  transition: opacity 2s
 //過度開始狀態，過度結束狀態
-.detail-enter, .detail-leave-to
+.bulletin-detail-enter, .bulletin-detail-leave-to
   opacity: 0
 //過度結束狀態，過度開始狀態
-.detail-enter-to,.detail-leave
+.bulletin-detail-enter-to,.detbulletin-detailail-leave
   opacity: 1
 
 
